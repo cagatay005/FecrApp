@@ -1,20 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+
+import WelcomeScreen from './src/screens/onboarding/WelcomeScreen';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <StatusBar style="light" />
+      <WelcomeScreen
+        onContinue={() => {
+          // TODO: navigate to onboarding page 2 (Sleep Inertia)
+        }}
+        onSkip={() => {
+          // TODO: skip onboarding once navigation is in place
+        }}
+      />
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

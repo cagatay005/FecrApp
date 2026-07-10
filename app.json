@@ -1,11 +1,12 @@
 {
   "expo": {
-    "name": "fecr-app",
+    "name": "Fecr",
     "slug": "fecr-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0B1E22",
     "ios": {
       "supportsTablet": true
     },
