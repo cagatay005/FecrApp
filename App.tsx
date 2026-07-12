@@ -1,18 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 
-import WelcomeScreen from './src/screens/onboarding/WelcomeScreen';
+import OnboardingCarousel from './src/screens/onboarding/OnboardingCarousel';
 
 export default function App() {
   return (
     <>
       <StatusBar style="light" />
-      <WelcomeScreen
-        onContinue={() => {
-          // TODO: navigate to onboarding page 2 (Sleep Inertia)
-        }}
-        onSkip={() => {
-          // TODO: skip onboarding once navigation is in place
+      <OnboardingCarousel
+        onFinish={() => {
+          // TODO: leave onboarding once the main app / navigator exists
         }}
       />
     </>

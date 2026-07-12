@@ -22,4 +22,14 @@ export const colors = {
   mountainLight: '#93A8B0',
   mountainMid: '#7C939C',
   mountainDark: '#5F7A83',
+
+  // Sleep-inertia chart
+  chartAxis: '#5E7A7C',
+  chartCurve: '#FFFFFF',
+  chartDashed: '#7C9698',
+  chartDivider: '#E9B84A',
+  chartZone: '#E9B84A',
+  chartLabelAlert: '#D7E2E2',
+  chartLabelZone: '#E9B84A',
+  chartAxisTitle: '#8FA9A9',
 } as const;

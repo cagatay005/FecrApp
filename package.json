@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "main": "index.ts",
   "dependencies": {
+    "@expo/metro-runtime": "~6.1.2",
     "expo": "^54.0.35",
     "expo-linear-gradient": "~15.0.8",
     "expo-status-bar": "~3.0.9",
-    "react": "^19.1.0",
-    "react-native": "^0.81.5",
-    "react-native-svg": "^15.12.1"
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-svg": "15.12.1",
+    "react-native-web": "^0.21.2"
   },
   "devDependencies": {
     "@types/react": "~19.1.0",
