@@ -11,5 +11,18 @@ export const strings = {
       cta: 'Break the Cycle',
       skip: 'Skip',
     },
+    sleepInertia: {
+      title: 'It’s not lack of willpower. It’s Sleep Inertia.',
+      subtitle:
+        'Sleep Inertia is the groggy transition from sleep to wakefulness. It temporarily impairs cognitive function and physical activation, making it hard to think and move.',
+      cta: 'See How It Works',
+      skip: 'Skip',
+      chart: {
+        yAxis: 'Brain Activity Level',
+        xAxis: 'Time (min) After Waking',
+        fullAlert: 'Full-Alert Level',
+        zone: 'Sleep Inertia Zone',
+      },
+    },
   },
 } as const;
