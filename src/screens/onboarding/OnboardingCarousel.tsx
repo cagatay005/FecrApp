@@ -13,6 +13,7 @@ import OnboardingFooter from '../../components/OnboardingFooter';
 import { strings } from '../../constants/strings';
 import WelcomePage from './WelcomePage';
 import SleepInertiaPage from './SleepInertiaPage';
+import PermissionsPage from './PermissionsPage';
 
 // Design mockups show four indicator dots; only the first two pages are
 // implemented so far. New pages get appended here.
@@ -33,7 +34,7 @@ export default function OnboardingCarousel({ onFinish }: Props) {
   const scrollRef = useRef<ScrollView>(null);
   const [index, setIndex] = useState(0);
 
-  const pageCount = 2; // implemented pages
+  const pageCount = 3; // implemented pages
 
   const goToPage = (next: number) => {
     const clamped = Math.max(0, Math.min(next, pageCount - 1));
@@ -49,7 +50,8 @@ export default function OnboardingCarousel({ onFinish }: Props) {
     goToPage(index + 1);
   };
 
-  const handleMomentumEnd = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
+  const syncIndex = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
+    if (width === 0) return;
     const page = Math.round(e.nativeEvent.contentOffset.x / width);
     if (page !== index) setIndex(page);
   };
@@ -62,7 +64,8 @@ export default function OnboardingCarousel({ onFinish }: Props) {
           horizontal
           pagingEnabled
           showsHorizontalScrollIndicator={false}
-          onMomentumScrollEnd={handleMomentumEnd}
+          onScroll={syncIndex}
+          onMomentumScrollEnd={syncIndex}
           scrollEventThrottle={16}
           style={styles.flex}
         >
@@ -71,6 +74,9 @@ export default function OnboardingCarousel({ onFinish }: Props) {
           </View>
           <View style={{ width }}>
             <SleepInertiaPage onNext={handleNext} />
+          </View>
+          <View style={{ width }}>
+            <PermissionsPage onNext={handleNext} />
           </View>
         </ScrollView>
 

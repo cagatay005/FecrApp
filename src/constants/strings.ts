@@ -24,5 +24,19 @@ export const strings = {
         zone: 'Sleep Inertia Zone',
       },
     },
+    permissions: {
+      title: 'We need your tools to secure your morning.',
+      subtitle:
+        'Location permission allows for automatic local prayer time sync. Notifications and Critical Alerts ensure your morning alarm bypasses silent mode.',
+      cta: 'Grant Permissions',
+      skip: 'Skip',
+      locationLabel: 'Location Access',
+      notificationsLabel: 'Notifications & Critical Alerts',
+      blockedSuffix: 'is turned off',
+      blockedMessage:
+        'It looks like this permission was declined earlier. Please enable it in Settings to continue.',
+      notNow: 'Not now',
+      openSettings: 'Open Settings',
+    },
   },
 } as const;
