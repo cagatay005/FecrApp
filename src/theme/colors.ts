@@ -23,6 +23,18 @@ export const colors = {
   mountainMid: '#7C939C',
   mountainDark: '#5F7A83',
 
+  // Dialog / modal
+  overlay: 'rgba(3, 12, 14, 0.72)',
+  dialogSurface: '#1C3D43',
+  dialogBorder: 'rgba(255, 255, 255, 0.10)',
+
+  // Permission cards
+  cardBorder: 'rgba(255, 255, 255, 0.22)',
+  cardBorderActive: '#FFC940',
+  cardBackgroundActive: 'rgba(255, 201, 64, 0.08)',
+  iconGold: '#E9B84A',
+  iconLine: '#C7D3D3',
+
   // Sleep-inertia chart
   chartAxis: '#5E7A7C',
   chartCurve: '#FFFFFF',
