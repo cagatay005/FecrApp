@@ -65,4 +65,15 @@ export const strings = {
       done: 'Done',
     },
   },
+  home: {
+    streakLabel: 'Days Streak',
+    nextPrefix: 'Next',
+    nextInfix: 'in',
+    fallbackAlarmName: 'Alarm',
+    noAlarmTitle: 'No alarm set yet.',
+    noAlarmSubtitle: 'Set your dawn alarm to start your streak.',
+    setAlarmCta: 'Set Alarm',
+    addAlarm: '+ Add Alarm',
+    defaultTask: 'Qibla Compass',
+  },
 } as const;
