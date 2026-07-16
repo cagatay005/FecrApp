@@ -6,7 +6,7 @@ import PrimaryButton from '../../components/PrimaryButton';
 import TaskChip from '../../components/TaskChip';
 import ThemedDialog from '../../components/ThemedDialog';
 import { strings } from '../../constants/strings';
-import { scheduleAlarmNotification } from '../../services/alarm';
+import { useAppState } from '../../state/AppContext';
 import { colors, spacing, typography } from '../../theme';
 import { AlarmTime, formatTime } from '../../utils/time';
 
@@ -24,6 +24,7 @@ type ConfirmState = { time: AlarmTime; scheduled: boolean } | null;
  */
 export default function SetAlarmPage({ onNext }: Props) {
   const copy = strings.onboarding.setAlarm;
+  const { addAlarm } = useAppState();
   const [alarmTime, setAlarmTime] = useState<AlarmTime>({ hour: 4, minute: 22 });
   const [pickerOpen, setPickerOpen] = useState(false);
   const [premiumInfoOpen, setPremiumInfoOpen] = useState(false);
@@ -34,8 +35,8 @@ export default function SetAlarmPage({ onNext }: Props) {
   const handleSave = async (time: AlarmTime) => {
     setAlarmTime(time);
     setPickerOpen(false);
-    const result = await scheduleAlarmNotification(time);
-    setConfirm({ time, scheduled: result === 'scheduled' });
+    const status = await addAlarm(time);
+    setConfirm({ time, scheduled: status === 'scheduled' });
   };
 
   const handleConfirmDone = () => {

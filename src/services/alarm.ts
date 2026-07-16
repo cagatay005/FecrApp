@@ -3,7 +3,20 @@ import * as Notifications from 'expo-notifications';
 
 import { AlarmTime } from '../utils/time';
 
-export type ScheduleResult = 'scheduled' | 'no-permission' | 'unavailable';
+export type ScheduleResult = {
+  status: 'scheduled' | 'no-permission' | 'unavailable';
+  notificationId: string | null;
+};
+
+/** Cancels a previously scheduled alarm notification. */
+export async function cancelAlarmNotification(notificationId: string | null): Promise<void> {
+  if (Platform.OS === 'web' || !notificationId) return;
+  try {
+    await Notifications.cancelScheduledNotificationAsync(notificationId);
+  } catch {
+    /* already fired or cancelled */
+  }
+}
 
 /**
  * Schedules a local notification for the next occurrence of the given time
@@ -12,14 +25,14 @@ export type ScheduleResult = 'scheduled' | 'no-permission' | 'unavailable';
  * alerts, background audio) arrives with the development build.
  */
 export async function scheduleAlarmNotification(time: AlarmTime): Promise<ScheduleResult> {
-  if (Platform.OS === 'web') return 'unavailable';
+  if (Platform.OS === 'web') return { status: 'unavailable', notificationId: null };
 
   try {
     let perm = await Notifications.getPermissionsAsync();
     if (!perm.granted && perm.canAskAgain) {
       perm = await Notifications.requestPermissionsAsync();
     }
-    if (!perm.granted) return 'no-permission';
+    if (!perm.granted) return { status: 'no-permission', notificationId: null };
 
     if (Platform.OS === 'android') {
       await Notifications.setNotificationChannelAsync('alarm', {
@@ -36,7 +49,7 @@ export async function scheduleAlarmNotification(time: AlarmTime): Promise<Schedu
       next.setDate(next.getDate() + 1);
     }
 
-    await Notifications.scheduleNotificationAsync({
+    const notificationId = await Notifications.scheduleNotificationAsync({
       content: {
         title: 'Fecr — time to rise',
         body: 'Your un-snoozable alarm is ringing. Wake up with purpose.',
@@ -49,8 +62,8 @@ export async function scheduleAlarmNotification(time: AlarmTime): Promise<Schedu
       },
     });
 
-    return 'scheduled';
+    return { status: 'scheduled', notificationId };
   } catch {
-    return 'unavailable';
+    return { status: 'unavailable', notificationId: null };
   }
 }
