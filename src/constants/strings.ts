@@ -38,5 +38,31 @@ export const strings = {
       notNow: 'Not now',
       openSettings: 'Open Settings',
     },
+    setAlarm: {
+      title: 'Set your first un-snoozable alarm.',
+      subtitle:
+        'Calculated automatically based on your location and chosen method to ensure a precise dawn alarm for a purposeful start to your day.',
+      cta: 'Set First Alarm',
+      tasks: {
+        qibla: 'Qibla Compass (Free)',
+        rug: 'Prayer Rug AI',
+        surah: 'Surah Recitation AI',
+      },
+      premiumTitle: 'Premium Task',
+      premiumMessage:
+        'Prayer Rug AI and Surah Recitation AI unlock with Premium after your free days. Qibla Compass stays free forever.',
+      ok: 'OK',
+      picker: {
+        title: 'Choose your wake-up time',
+        save: 'Save Alarm',
+        cancel: 'Cancel',
+      },
+      confirmTitle: 'Alarm set for',
+      confirmScheduled:
+        'Your un-snoozable dawn alarm is ready. Sleep early tonight — tomorrow starts with purpose.',
+      confirmNoPermission:
+        'Your alarm time is saved, but notifications are off. Enable them in Settings so the alarm can ring.',
+      done: 'Done',
+    },
   },
 } as const;
