@@ -8,9 +8,10 @@ type Props = {
   title: string;
   message: string;
   confirmLabel: string;
-  cancelLabel: string;
   onConfirm: () => void;
-  onCancel: () => void;
+  /** Omit both to render a single-action dialog. */
+  cancelLabel?: string;
+  onCancel?: () => void;
 };
 
 /**
@@ -27,29 +28,33 @@ export default function ThemedDialog({
   onConfirm,
   onCancel,
 }: Props) {
+  const dismiss = onCancel ?? onConfirm;
+
   return (
     <Modal
       visible={visible}
       transparent
       animationType="fade"
       statusBarTranslucent
-      onRequestClose={onCancel}
+      onRequestClose={dismiss}
     >
-      <Pressable style={styles.backdrop} onPress={onCancel}>
+      <Pressable style={styles.backdrop} onPress={dismiss}>
         {/* Stop taps on the card from closing the dialog */}
         <Pressable style={styles.card} onPress={() => {}}>
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.message}>{message}</Text>
 
           <View style={styles.actions}>
-            <Pressable
-              accessibilityRole="button"
-              onPress={onCancel}
-              hitSlop={8}
-              style={({ pressed }) => [styles.action, pressed && styles.pressed]}
-            >
-              <Text style={styles.cancelLabel}>{cancelLabel}</Text>
-            </Pressable>
+            {cancelLabel !== undefined && (
+              <Pressable
+                accessibilityRole="button"
+                onPress={onCancel}
+                hitSlop={8}
+                style={({ pressed }) => [styles.action, pressed && styles.pressed]}
+              >
+                <Text style={styles.cancelLabel}>{cancelLabel}</Text>
+              </Pressable>
+            )}
             <Pressable
               accessibilityRole="button"
               onPress={onConfirm}

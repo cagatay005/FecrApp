@@ -14,9 +14,8 @@ import { strings } from '../../constants/strings';
 import WelcomePage from './WelcomePage';
 import SleepInertiaPage from './SleepInertiaPage';
 import PermissionsPage from './PermissionsPage';
+import SetAlarmPage from './SetAlarmPage';
 
-// Design mockups show four indicator dots; only the first two pages are
-// implemented so far. New pages get appended here.
 const TOTAL_DOTS = 4;
 
 type Props = {
@@ -34,7 +33,7 @@ export default function OnboardingCarousel({ onFinish }: Props) {
   const scrollRef = useRef<ScrollView>(null);
   const [index, setIndex] = useState(0);
 
-  const pageCount = 3; // implemented pages
+  const pageCount = 4; // implemented pages
 
   const goToPage = (next: number) => {
     const clamped = Math.max(0, Math.min(next, pageCount - 1));
@@ -77,6 +76,9 @@ export default function OnboardingCarousel({ onFinish }: Props) {
           </View>
           <View style={{ width }}>
             <PermissionsPage onNext={handleNext} />
+          </View>
+          <View style={{ width }}>
+            <SetAlarmPage onNext={handleNext} />
           </View>
         </ScrollView>
 

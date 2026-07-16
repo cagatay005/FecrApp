@@ -32,6 +32,15 @@ export const colors = {
   cardBorder: 'rgba(255, 255, 255, 0.22)',
   cardBorderActive: '#FFC940',
   cardBackgroundActive: 'rgba(255, 201, 64, 0.08)',
+
+  // Task chips & alarm display
+  chipBackground: 'rgba(0, 0, 0, 0.30)',
+  chipBorder: 'rgba(255, 255, 255, 0.14)',
+  chipSelectedBorder: '#FFC940',
+  chipSelectedBackground: 'rgba(255, 201, 64, 0.10)',
+  timeGlow: 'rgba(255, 201, 64, 0.55)',
+  wheelHighlight: 'rgba(255, 201, 64, 0.10)',
+  wheelHighlightBorder: 'rgba(255, 201, 64, 0.35)',
   iconGold: '#E9B84A',
   iconLine: '#C7D3D3',
 
